@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="//d3js.org/d3.v4.js"></script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+    svg { width:100%; height: 100% }
+  </style>
+</head>
+
+<body>
+  <script>
+    var width = 960;
+    var height = 500;
+    
+    var svg = d3.select("body").append("svg")
+    
+    var projection = d3.geoMercator()
+      .scale(width / 2 / Math.PI)
+      .scale(70000)
+      .translate([width / 2, height / 2])
+      .center([-77,39])
+
+    var path = d3.geoPath()
+      .projection(projection);
+
+    
+
+d3.json("stations.geojson",function(err, geojson){
+
+  svg.selectAll("path")
+		.data(geojson.features) 
+		.enter()   	
+    .append("path")
+		.attr("d", path)
+    .attr("fill",function(d,i){
+    		console.log(d.properties.LineCode1);
+    		if (d.properties.LineCode1 == "RD")
+    			return "red";
+    		else if (d.properties.LineCode1 == "BL")
+    			return "blue";
+        else if (d.properties.LineCode1 == "YL")
+          return "yellow";
+        else if (d.properties.LineCode1 == "GR")
+          return "green";
+        else if (d.properties.LineCode1 == "OR")
+          return "orange";
+        else if (d.properties.LineCode1 == "SL")
+          return "grey";
+        
+
+    		 else return "black";})
+      .attr("opacity",function(d){
+        //console.log(d.properties.time);
+        return (1- d.properties.time / 60);
+        })
+})
+
+  </script>
+</body>
