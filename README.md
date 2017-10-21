@@ -13,6 +13,27 @@ What you'll need:
 What you'll want:  
 + to use the console in chrome
 
+****
+
+minimum viable geojson:
+
+`{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0112927,
+          38.8901562
+        ]
+      }
+    }
+  ]
+}`
+
 
 ****
 
@@ -23,6 +44,11 @@ having access to my own github repository
 matching [], {}, and so forth
 
 = ≠ ==
+
+lon, lat vs. lat, lon
+
+***
+
 
 _incredibly useful resources_
 
