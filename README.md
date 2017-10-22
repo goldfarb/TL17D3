@@ -5,7 +5,7 @@
 ****
 
 What you'll need:  
-+ a terminal runnin  `python -m SimpleHTTPServer`  
++ a terminal running  `python -m SimpleHTTPServer`  
 + data -- try   
   + https://www.capitalbikeshare.com/system-data
   + https://www.census.gov/geo/maps-data/data/tiger-line.html
